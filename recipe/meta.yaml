@@ -1,17 +1,16 @@
 {% set name = "waf" %}
-{% set version = "2.0.8" %}
+{% set version = "2.0.18" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/waf-project/waf/archive/{{ name }}-{{ version }}.tar.gz
-  sha256: 0eeacb5a320caba819d6a5ea947a6ace527bbdd9789d888ea0f1313b9c2cad0b
+  url: https://waf.io/waf-{{ version }}.tar.bz2
+  sha256: 263d7ad4a75fd278399a1eae3eff6e8256a27617b3231b48e9b8992d1b6c7064
 
 build:
-  number: 1000
+  number: 0
   script:
     - python waf-light --make-waf --tool=swig,cython,boost,use_config
     - cp waf "${PREFIX}/bin"     # [unix]
