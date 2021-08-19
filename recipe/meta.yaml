@@ -8,9 +8,11 @@ package:
 source:
   url: https://waf.io/waf-{{ version }}.tar.bz2
   sha256: 841648ed90b13df1dac9ef2dc704fe1fe1cba66f7f0e92ff97f8b15d8d04d967
+  patches:
+    - clang_arm64.patch
 
 build:
-  number: 0
+  number: 1
   script:
     - python waf-light --make-waf --tool=swig,cython,boost,use_config
     - cp waf "${PREFIX}/bin"     # [unix]
@@ -19,6 +21,8 @@ build:
 requirements:
   build:    
     - {{ compiler('c') }}
+    - m2-path  # [win]
+    - patch    # [not win]
   host:
     - python
 

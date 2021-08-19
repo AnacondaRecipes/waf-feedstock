@@ -1,0 +1,25 @@
+Index: waf-2.0.22/waflib/Tools/c_config.py
+===================================================================
+--- waf-2.0.22.orig/waflib/Tools/c_config.py
++++ waf-2.0.22/waflib/Tools/c_config.py
+@@ -56,6 +56,7 @@ MACRO_TO_DEST_CPU = {
+ '__mips__'    : 'mips',
+ '__sparc__'   : 'sparc',
+ '__alpha__'   : 'alpha',
++'__arm64__'   : 'arm64',
+ '__aarch64__' : 'aarch64',
+ '__thumb__'   : 'thumb',
+ '__arm__'     : 'arm',
+Index: waf-2.0.22/waflib/extras/file_to_object.py
+===================================================================
+--- waf-2.0.22.orig/waflib/extras/file_to_object.py
++++ waf-2.0.22/waflib/extras/file_to_object.py
+@@ -50,7 +50,7 @@ class file_to_object_s(Task.Task):
+ 				name.append('_')
+ 		file = self.inputs[0].abspath()
+ 		size = os.path.getsize(file)
+-		if self.env.DEST_CPU in ('x86_64', 'ia', 'aarch64'):
++		if self.env.DEST_CPU in ('x86_64', 'ia', 'aarch64', 'arm64'):
+ 			unit = 'quad'
+ 			align = 8
+ 		elif self.env.DEST_CPU in ('x86','arm', 'thumb', 'm68k'):
