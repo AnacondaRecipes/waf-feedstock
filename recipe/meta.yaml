@@ -32,6 +32,15 @@ test:
   files:
     - wscript
 
+  # waf is not importable as a library, appease the linter.
+  imports:
+    - sys
+
+  commands:
+    - waf --help
+    - waf configure
+    - waf build
+
 about:
   home: https://waf.io
   license: BSD-3-Clause
