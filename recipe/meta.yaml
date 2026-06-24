@@ -20,9 +20,8 @@ build:
 
 requirements:
   build:    
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - m2-patch  # [win]
-    - patch     # [not win]
   host:
     - python
 
@@ -33,15 +32,18 @@ test:
   files:
     - wscript
 
-  commands:
-    - waf --help
-    - waf configure
-    - waf build
-
 about:
   home: https://waf.io
-  license: BSD 3-Clause
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
   summary: A build automation tool.
+  description: >
+    Waf is a Python-based framework for configuring, compiling and installing
+    applications with automatic build order, dependency detection, and parallel
+    task execution.
+  doc_url: https://waf.io/book/
+  dev_url: https://gitlab.com/ita1024/waf
 
 extra:
   recipe-maintainers:
